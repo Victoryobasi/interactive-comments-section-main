@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      main {
+        width: 70vw;
+        height: 100vh;
+        margin: 30px auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      body {
+        font-family: "Rubik", sans-serif;
+        background-color: hsl(223, 19%, 93%);
+      }
+      .comment1 {
+        width: 100%;
+        /* height: 38%; */
+        display: flex;
+        background-color: hsl(0, 0%, 100%);
+        gap: 15px;
+        padding: 20px;
+        border-top: none;
+        border-radius: 8px;
+      }
+      .voulme {
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+        width: 90px;
+        height: 72px;
+        text-align: center;
+        border-radius: 8px;
+        justify-content: center;
+        background-color: hsl(239, 57%, 85%);
+        color: hsl(238, 40%, 52%);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .voulm {
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        height: 72px;
+        text-align: center;
+        border-radius: 8px;
+        justify-content: center;
+        background-color: hsl(239, 57%, 85%);
+        color: hsl(238, 40%, 52%);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .detailsofcomment1 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .details {
+        display: flex;
+        justify-content: space-between;
+      }
+      .name {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      #name {
+        color: hsl(212, 24%, 26%);
+      }
+      #day {
+        color: hsl(211, 10%, 45%);
+      }
+      .replyimage {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        color: hsl(212, 24%, 26%);
+        cursor: pointer;
+      }
+      .text {
+        color: hsl(211, 10%, 45%);
+        font-size: 16px;
+      }
+      .comment2 {
+        width: 100%;
+        /* height: 38%; */
+        display: flex;
+        background-color: hsl(0, 0%, 100%);
+        gap: 15px;
+        padding: 10px;
+        border-top: none;
+        border-radius: 8px;
+        float: right;
+      }
+      .content2 {
+        width: 95%;
+        border-left: 1px solid;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 20px;
+        /* margin-left: 100px; */
+        margin-left: auto;
+      }
+      .replyimage2 {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .delete {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        cursor: pointer;
+        color: hsl(358, 79%, 66%);
+      }
+      .edit {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        cursor: pointer;
+        color: hsl(238, 40%, 52%);
+      }
+      .you {
+        background-color: hsl(238, 40%, 52%);
+        width: 35px;
+        text-align: center;
+        border-radius: 1px;
+        color: hsl(0, 0%, 100%);
+        cursor: pointer;
+      }
+      #comment1 {
+        gap: 20px;
+        padding: 10px;
+      }
+      .comment2 {
+        padding: 20px;
+      }
+      .send {
+        background-color: hsl(238, 40%, 52%);
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        align-content: center;
+        color: hsl(0, 0%, 100%);
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .span {
+        color: hsl(238, 40%, 52%);
+        cursor: pointer;
+      }
+      .plus {
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 40%;
+      }
+      .mins {
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 40%;
+      }
+      .reply {
+        color: hsl(238, 40%, 52%);
+      }
+      .comment {
+        width: 100%;
+        height: 100%;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        cursor: pointer;
+      }
+      .footer {
+        display: none;
+        /* justify-content: space-between; */
+      }
+      .lastcomment{
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        main {
+          width: 95%;
+          height: 100%;
+        }
+        .comment1 {
+          width: 100%;
+          flex-direction: column;
+        }
+        .voulm {
+          display: none;
+        }
+        .replyimage {
+          display: none;
+        }
+        .voulme {
+          display: none;
+        }
+        .delete {
+          display: none;
+        }
+        .edit {
+          display: none;
+        }
+        .send{
+          display: none;
+        }
+        .commentimage{
+          display: none;
+        }
+        .footer {
+          display: flex;
+          justify-content: space-between;
+        }
+        .replyimagemob {
+          display: flex;
+          gap: 7px;
+          align-items: center;
+        }
+        .voulmmob {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+          background-color: hsl(239, 57%, 85%);
+          width: 90px;
+          height: 40px;
+          justify-content: center;
+          border-radius: 13px;
+          cursor: pointer;
+        }
+        .comment2 {
+          width: 100%;
+          flex-direction: column;
+        }
+        .replyimage2mob {
+          display: flex;
+        }
+        .icondetails{
+          display: flex;
+          gap: 15px;
+          align-items: center;
+        }
+        .deletemob{
+          display: flex;
+          gap: 7px;
+          color: hsl(358, 79%, 66%);
+          align-items: center;
+        }
+        textarea{
+          height: 90px;
+          border: 1px solid;
+          border-radius: 6px;
+        }
+        .lastcomment{
+          display: flex;
+          justify-content: space-between;
+        }
+        .sendmob{
+          background-color: hsl(238, 40%, 52%);
+          width: 90px;
+          height: 40px;
+          text-align: center;
+          align-content: center;
+          color: hsl(0, 0%, 100%);
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        .editmob{
+          display: flex;
+          gap: 7px;
+          align-items: center;
+          color: hsl(238, 40%, 52%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="comment1">
+        <div class="voulm">
+          <span class="plus">+</span>
+          <span>12</span>
+          <span class="mins">-</span>
+        </div>
+        <div class="detailsofcomment1">
+          <div class="details">
+            <div class="name">
+              <img
+                src="./images/avatars/image-amyrobson.png"
+                alt=""
+                style="width: 30px; height: 30px; cursor: pointer"
+              />
+              <h4 id="name">amyrobson</h4>
+              <p id="day">1 month ago</p>
+            </div>
+            <div class="replyimage">
+              <img
+                src="./images/icon-reply.svg"
+                alt=""
+                style="width: 15px; height: 15px; cursor: pointer;"
+              />
+              <p class="reply">Reply</p>
+            </div>
+          </div>
+          <div class="text">
+            <p>
+              Impressive! Though it seems the drag feature could be improved.
+              But overall it looks incredible. You've nailed the design and the
+              responsiveness at various breakpoints works really well.
+            </p>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="voulmmob">
+            <span class="plus">+</span>
+            <span>12</span>
+            <span class="mins">-</span>
+          </div>
+          <div class="replyimagemob">
+            <img
+              src="./images/icon-reply.svg"
+              alt=""
+              style="width: 15px; height: 15px; cursor: pointer;"
+            />
+            <p class="reply">Reply</p>
+          </div>
+        </div>
+      </div>
+      <div class="comment1">
+        <div class="voulme">
+          <span class="plus">+</span>
+          <span>5</span>
+          <span class="mins">-</span>
+        </div>
+        <div class="detailsofcomment1">
+          <div class="details">
+            <div class="name">
+              <img
+                src="./images/avatars/image-maxblagun.png"
+                alt=""
+                style="width: 30px; height: 30px; cursor: pointer"
+              />
+              <h4 id="name">maxblagun</h4>
+              <p id="day">2 weeks ago</p>
+            </div>
+            <div class="replyimage">
+              <img
+                src="./images/icon-reply.svg"
+                alt="" style="width: 15px; height: 15px; cursor: pointer;;"/>
+              <p class="reply">Reply</p>
+            </div>
+          </div>
+          <div class="text">
+            <p>
+              Woah, your project looks awesome! How long have you been coding
+              for? I'm still new, but think I want to dive into React as well
+              soon. Perhaps you can give me an insight on where I can learn
+              React? Thanks!
+            </p>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="voulmmob">
+            <span class="plus">+</span>
+            <span>5</span>
+            <span class="mins">-</span>
+          </div>
+          <div class="replyimagemob">
+            <img
+              src="./images/icon-reply.svg"
+              alt=""
+              style="width: 15px; height: 15px;cursor: pointer;"
+            />
+            <p class="reply">Reply</p>
+          </div>
+        </div>
+      </div>
+      <div class="content2">
+        <div class="comment2">
+          <div class="voulme">
+            <span class="plus">+</span>
+            <span>4</span>
+            <span class="mins">-</span>
+          </div>
+          <div class="detailsofcomment1">
+            <div class="details">
+              <div class="name">
+                <img
+                  src="./images/avatars/image-ramsesmiron.png"
+                  alt=""
+                  style="width: 30px; height: 30px;cursor: pointer;"
+                />
+                <h4 id="name">ramsesmiron</h4>
+                <p id="day">1 week ago</p>
+              </div>
+              <div class="replyimage">
+                <img
+                  src="./images/icon-reply.svg"
+                  alt=""
+                  style="width: 15px; height: 15px; cursor: pointer;"
+                />
+                <p class="reply">Reply</p>
+              </div>
+            </div>
+            <div class="text">
+              <p>
+                <span class="span">@maxblagun</span> If you're still new, I'd
+                recommend focusing on the fundamentals of HTML, CSS, and JS
+                before considering React. It's very tempting to jump ahead but
+                lay a solid foundation first.
+              </p>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="voulmmob">
+              <span class="plus">+</span>
+              <span>4</span>
+              <span class="mins">-</span>
+            </div>
+            <div class="replyimagemob">
+              <img
+                src="./images/icon-reply.svg"
+                alt=""
+                style="width: 15px; height: 15px; cursor: pointer;"
+              />
+              <p class="reply">Reply</p>
+            </div>
+          </div>
+        </div>
+        <div class="comment2">
+          <div class="voulme">
+            <span class="plus">+</span>
+            <span>2</span>
+            <span class="mins">-</span>
+          </div>
+          <div class="detailsofcomment1" id="name">
+            <div class="details">
+              <div class="name">
+                <img
+                  src="./images/avatars/image-juliusomo.png"
+                  alt=""
+                  style="width: 30px; height: 30px"
+                />
+                <h4 id="name">juliusomo</h4>
+                <div class="you">you</div>
+                <p id="day">2 days ago</p>
+              </div>
+              <div class="replyimage2">
+                <div class="delete">
+                  <img
+                    src="./images/icon-delete.svg"
+                    alt=""
+                    style="width: 10px; height: 10px"
+                  />
+                  <p>Delete</p>
+                </div>
+                <div class="edit">
+                  <img
+                    src="./images/icon-edit.svg"
+                    alt=""
+                    style="width: 10px; height: 10px"
+                  />
+                  <p>Edit</p>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <p>
+                <span class="span">@ramsesmiron</span> I couldn't agree more
+                with this. Everything moves so fast and it always seems like
+                everyone knows the newest library/framework. But the
+                fundamentals are what stay constant.
+              </p>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="voulmmob">
+              <span class="plus">+</span>
+              <span>2</span>
+              <span class="mins">-</span>
+            </div>
+            <div class="icondetails">
+              <div class="icon">
+                <span class="deletemob">
+                  <img src="./images/icon-delete.svg" alt="" style="height: 15px; width: 15px; cursor: pointer;">
+                  <p>Delete</p>
+                </span>
+              </div>
+              <div class="icon">
+                <span class="editmob">
+                  <img src="./images/icon-edit.svg" alt="" style="width: 15px; height: 15px; cursor: pointer;">
+                  <p>Edit</p>
+                </span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comment1" id="comment1">
+        <div class="commentimage">
+          <img
+            src="./images/avatars/image-juliusomo.png"
+            alt=""
+            style="width: 30px; height: 30px; cursor: pointer"
+          />
+        </div>
+        <div class="comment">
+          <textarea name="" id="" placeholder="Add a comment..."></textarea>
+        </div>
+        <div class="send">
+          <p>SEND</p>
+        </div>
+        <div class="lastcomment">
+          <div class="commentimagemob">
+          <img
+            src="./images/avatars/image-juliusomo.png"
+            alt=""
+            style="width: 30px; height: 30px; cursor: pointer"
+          />
+        </div>
+        <div class="sendmob">
+          <p>SEND</p>
+        </div>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Victory Oguchiluru Obasi</a>.
+      </div>
+    </main>
+  </body>
+</html>
